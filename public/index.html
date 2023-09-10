@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>DnB Tierlist</title>
+</head>
+
+<body>
+
+    <div id="viewport">
+        <div id="container">
+            <div id="row-holder1" class="tierrow" style="background-color: #FF3043;">
+                <div class="tierrow__letter">
+                    S
+                    <ion-icon id="sparkle-icon" name="sparkles"></ion-icon>
+                </div>
+                <div id="blockrow1" class="tierrow__blockrow">
+                </div>
+            </div>
+            <div id="row-holder2" class="tierrow" style="background-color: #FFA275;">
+                <div class="tierrow__letter">A</div>
+                <div id="blockrow2" class="tierrow__blockrow">
+                </div>
+            </div>
+            <div id="row-holder3" class="tierrow" style="background-color: #D4D55E;">
+                <div class="tierrow__letter">B</div>
+                <div id="blockrow3" class="tierrow__blockrow"></div>
+            </div>
+            <div id="row-holder4" class="tierrow" style="background-color: #7B915E;">
+                <div class="tierrow__letter">C</div>
+                <div id="blockrow4" class="tierrow__blockrow"></div>
+            </div>
+            <div id="row-holder5" class="tierrow" style="background-color: #81C6CC;">
+                <div class="tierrow__letter">D</div>
+                <div id="blockrow5" class="tierrow__blockrow"></div>
+            </div>
+            <div id="row-holder6" class="tierrow" style="background-color: #A36CFC;">
+                <div class="tierrow__letter">E</div>
+                <div id="blockrow6" class="tierrow__blockrow"></div>
+            </div>
+            <div id="row-holder7" class="tierrow" style="background-color: #EAA6E2;">
+                <div class="tierrow__letter">F</div>
+                <div id="blockrow7" class="tierrow__blockrow"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button>Add Block</button>
+        <input type="text" id="rowInput" placeholder="Enter row number (1-7)">
+        <input type="text" id="urlInput" placeholder="Enter URL">
+        <input type="checkbox" id="editmodeInput"> Edit Mode
+    </div>
+
+    <script src="/static/bundle.js"></script>
+
+    <div id="deleteArea">Drag here to delete</div>
+
+    <div id="editBar" class="edit-bar">
+        <ion-icon name="close" id="closeEditBar"></ion-icon>
+
+        <div class="info-column">
+            <label for="urlInput">URL:</label>
+            <input type="text" id="readonlyUrlField" readonly>
+        </div>
+      
+        <div class="options-column">
+            <label>Tags:</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="platinumTagCheckbox" class="large-checkbox"> Platinum <br>
+                <input type="checkbox" id="hiddenTagCheckbox" class="large-checkbox"> Hidden <br>
+                <input type="checkbox" id="newTagCheckbox" class="large-checkbox"> New <br>
+                <input type="checkbox" id="hotTagCheckbox" class="large-checkbox"> Hot <br>
+            </div>
+        </div>
+    </div>
+    <div id="editBarSpacer"></div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

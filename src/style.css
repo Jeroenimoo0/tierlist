@@ -1,0 +1,255 @@
+:root {
+    --gold: #ffb338;
+    --gold-light-shadow: #77571d;
+    --gold-dark-shadow: #835709;
+    --platinum: #e5e4e2;
+    --platinum-light-shadow: #b0afad;
+    --platinum-dark-shadow: #9b9a98;
+}
+
+body {
+    background-color: #202124;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    margin: 0px;
+}
+
+#viewport {
+    overflow-x: auto;
+    display: flex;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.tierrow {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.tierrow__letter {
+    font-size: 100px;
+    line-height: 100px;
+    margin-right: 10px;
+    margin: 10px;
+    width: 110px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: white;
+    position: relative;
+}
+
+#sparkle-icon {
+    font-size: 24px;
+    color: rgb(255, 247, 1);
+    position: absolute;
+    top: -3px;
+    right: 10px;
+    filter: drop-shadow(-2px 3px 2px rgb(0 0 0 / 0.2));
+    padding: 10px;
+}
+
+.tierrow__blockrow {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    height: 120px;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+}
+
+.blockrow__block {
+    width: 93px;
+    height: 93px;
+    display: inline-block;
+    margin-right: 5px;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+    cursor: pointer;
+    border: 6px solid transparent;
+    position: relative;
+}
+
+/* block platinum styling */
+
+.blockrow__block--platinum:before {
+    content: " ";
+    background-image: repeating-linear-gradient(105deg,
+            var(--platinum) 0%,
+            var(--platinum-dark-shadow) 20%,
+            var(--platinum) 48%);
+    z-index: -1;
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -7px;
+}
+
+.blockrow__block--platinum:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-image: repeating-linear-gradient(4deg, var(--platinum) 0%, var(--platinum-light-shadow) 50%, var(--platinum) 100%);
+    border-image-slice: 1;
+    border-image-width: 4px;
+}
+
+.blockrow__block--platinum img {
+    opacity: 0.8;
+}
+
+/* block new styling */
+
+.blockrow__block--new:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 3px solid yellow;
+}
+
+.blockrow__block--new:after {
+    content: "new";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: -13px;
+    right: 0;
+    font-family: Arial;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* block hot */
+
+.blockrow__block--hot:before {
+    --angle: 0deg;
+    content: " ";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: -8px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-image: linear-gradient(var(--angle), rgba(180, 58, 114, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    border-image-slice: 1;
+    border-image-width: 18px 0px 0px 0px;
+    animation: 10s rotate linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.blockrow__block--hot:after {
+    content: "HOT!";
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: -8px;
+    right: 0;
+    font-family: Arial;
+    font-weight: bold;
+    color: rgb(255, 253, 237);
+    padding-right: 4px;
+}
+
+.blockrow__block img {
+    width: 100%;
+    height: 100%;
+}
+
+.blockrow__block--hidden img {
+    opacity: 0.5;
+}
+
+.controls {
+    padding: 0px 15px 0px 15px;
+}
+
+#deleteArea {
+    width: 100%;
+    height: 100px;
+    border: 2px solid red;
+    background-color: #7d000d;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: red;
+    box-sizing: border-box;
+    padding: 0px 15px 0px 15px;
+}
+
+.edit-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #606060;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 150px;
+}
+
+#editBarSpacer {
+    height: 150px;
+}
+
+#closeEditBar {
+    position: absolute;
+    top: 5;
+    right: 5;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.info-column,
+.options-column {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+}
+
+.checkbox-group {
+    margin-top: 10px;
+}
+
+.large-checkbox {
+    width: 20px;
+    height: 20px;
+}
