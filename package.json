@@ -1,0 +1,22 @@
+{
+  "name": "tierlist",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsdom": "^16.7.0",
+    "open-graph": "^0.2.4",
+    "socket.io": "^4.0.1",
+    "socket.io-client": "^4.0.1",
+    "sortablejs": "latest"
+  },
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "webpack": "webpack --mode production"
+  }
+}
