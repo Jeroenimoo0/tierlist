@@ -13,6 +13,7 @@ if (navigator.userAgent.match(/Android/i)
     document.write('<meta name="viewport" content="width=device-width, initial-scale=0.75" />');
 }
 
+const sortables = [];
 const socket = io(window.location.host);
 
 function emitUpdate() {
@@ -21,7 +22,7 @@ function emitUpdate() {
 
 // Initialize sortable rows
 for (let i = 1; i <= 7; i++) {
-    new Sortable(document.getElementById(`blockrow${i}`), {
+    const sortable = new Sortable(document.getElementById(`blockrow${i}`), {
         group: 'shared',
         animation: 150,
         onMove: function (evt) {
@@ -41,6 +42,7 @@ for (let i = 1; i <= 7; i++) {
         },
         onRemove: emitUpdate
     });
+    sortables.push(sortable);
 }
 
 function findDuplicateURL(item) {
@@ -252,4 +254,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hide the bar initially
     hideEditBar();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const editModeCheckbox = document.getElementById("editmodeInput");
+
+    editModeCheckbox.addEventListener("change", function () {
+        const isDisabled = !this.checked;
+        sortables.forEach(sortable => {
+            sortable.option("disabled", isDisabled);
+        });
+    });
+
+    // Initialize based on the checkbox state
+    editModeCheckbox.dispatchEvent(new Event('change'));
 });
