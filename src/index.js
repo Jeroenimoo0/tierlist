@@ -85,12 +85,15 @@ function showEditBar(blockData, block) {
 
 const blockDataMap = new Map();
 
+const showHiddenCheckbox = document.getElementById("showHiddenFilter");
+
 // Function to create a block element
 function createBlockElement(blockData) {
     // Create block
     const block = document.createElement("div");
     block.className = "blockrow__block";
     block.dataset.url = blockData.url;
+    block.style.display = (showHiddenCheckbox.checked || !blockData.tags || !blockData.tags.includes('hidden')) ? "inline-block" : "none";
 
     // Create link
     const link = document.createElement("a");
@@ -273,4 +276,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize based on the checkbox state
     editModeCheckbox.dispatchEvent(new Event('change'));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const showHiddenCheckbox = document.getElementById("showHiddenFilter");
+
+    showHiddenCheckbox.addEventListener("change", () => {
+        const blocks = document.querySelectorAll(".blockrow__block--hidden");
+        blocks.forEach(block => {
+            block.style.display = showHiddenCheckbox.checked ? "inline-block" : "none";
+        });
+    });
 });
