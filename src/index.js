@@ -92,11 +92,18 @@ function createBlockElement(blockData) {
     block.className = "blockrow__block";
     block.dataset.url = blockData.url;
 
+    // Create link
+    const link = document.createElement("a");
+    link.href = blockData.url;
+    link.target = "_blank"; // Open in new tab
+
     // Add image
     const img = document.createElement("img");
     img.src = blockData.imgSrc;
     img.alt = "Placeholder";
-    block.appendChild(img);
+    link.appendChild(img); // Append image to link
+
+    block.appendChild(link); // Append link to block
 
     // Add tag classes
     if (blockData.tags) {
@@ -105,14 +112,12 @@ function createBlockElement(blockData) {
         });
     }
 
-    block.addEventListener("click", function () {
+    block.addEventListener("click", function (event) {
         const isEditMode = document.getElementById("editmodeInput").checked;
         if (isEditMode) {
             // Open editBar and pass block data
+            event.preventDefault(); // Prevent link from being followed
             showEditBar(blockData, block);
-        } else {
-            // Open the link as usual
-            window.open(this.dataset.url, '_blank');
         }
     });
 
