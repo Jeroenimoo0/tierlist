@@ -79,6 +79,15 @@ body {
     position: relative;
 }
 
+/* Block point events for the before/after pseudo elements */
+.blockrow__block::before {
+    pointer-events: none;
+}
+
+.blockrow__block::after {
+    pointer-events: none;
+}
+
 /* block platinum styling */
 
 .blockrow__block--platinum:before {
