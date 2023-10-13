@@ -276,6 +276,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize based on the checkbox state
     editModeCheckbox.dispatchEvent(new Event('change'));
+
+    // temp hidden
+    editModeCheckbox.style.display = 'none';
 });
 
 document.addEventListener("DOMContentLoaded", () => {
